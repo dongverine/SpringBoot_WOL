@@ -24,8 +24,6 @@ public class DefaultConfig {
             String[] macInfo = item.split("#");
             comList.add(new MacAddr(macInfo[0],macInfo[1]));
         });
-        MacAddr dj = new MacAddr("동진","4C:CC:6A:8E:DE:B3");
-        comList.add(dj);
         return comList;
     }
 //    @Bean
