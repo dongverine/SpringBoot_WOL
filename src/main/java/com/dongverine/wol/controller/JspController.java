@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class JspController {
-    @GetMapping("/")
+    @GetMapping("/wol")
     public String index(){
         return "index";//index.jsp
     }

@@ -5,14 +5,14 @@
 	<meta charset="utf-8" />
 	<!--meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"-->
 	<meta name="viewport" content="width=200px, user-scalable=no">
-	<link rel="shortcut icon" href="./common/switch.png" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/common/switch.png" />
 	<style>
 
 	.item {font-family:맑은고딕;border:1px solid #8D9DAF;float:left;height:25px;}
 	/*.itemTable td{border-color:black;;border:1px;}
 	--.itemTable td{border-color:black;;border:1px;}*/
 	</style>
-	<script type="text/javascript" src="./common/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/common/jquery-3.3.1.js"></script>
 	<script>
 	function mobileAndTabletcheck() {
 	  var check = false;
@@ -25,7 +25,7 @@
 	function getList(){
 		$.ajax({
 			type : "POST",
-			url : "./getWolList",
+			url : "${pageContext.request.contextPath}/wol/ajax/getWolList",
 			async : true,
 			dataType : "text",
 			data : {},
@@ -45,7 +45,7 @@
 						var itemDiv2 = $("<div class='item'></div>");
 						//var itemDiv3 = $("<div class='item' style='width:25px;' id='stat_"+i+"' style='cursor:pointer;'></div>");
 
-						var img = $("<img src='./common/switch-b.png' style='width:25px;height:25px;cursor:pointer;'></img>");
+						var img = $("<img src='${pageContext.request.contextPath}/common/switch-b.png' style='width:25px;height:25px;cursor:pointer;'></img>");
 
 						//var itemDiv = $("<div class='item'></div>");
 						//var itemTbl = $("<table class='itemTable' border='1' cellspacing='0' cellpadding='0'></table>");
@@ -92,7 +92,7 @@
 		var key = event.data.key;
 		$.ajax({
 			type : "POST",
-			url : "./sendWol",
+			url : "${pageContext.request.contextPath}/wol/ajax/sendWol",
 			async : true,
 			dataType : "text",
 			data : {

@@ -20,7 +20,7 @@ public class WolRestController {
     WolService wolService;
 
     @RequestMapping(
-            value="/getWolList"
+            value="/wol/ajax/getWolList"
             ,method={RequestMethod.POST,RequestMethod.GET}
             ,produces="application/json;charset=utf8"
             )
@@ -33,7 +33,7 @@ public class WolRestController {
     }
 
     @RequestMapping(
-            value="/sendWol"
+            value="/wol/ajax/sendWol"
             ,method={RequestMethod.POST}
             ,produces="application/json;charset=utf8")
     public void sendWol(Integer key){
