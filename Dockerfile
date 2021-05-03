@@ -11,4 +11,4 @@ ENV PORT=${port}
 ENV LOGINID=${loginid}
 ENV LOGINPASS=${loginpass}
 EXPOSE ${PORT}
-ENTRYPOINT ["java","-jar","/app.war","--config.macaddrs=${MACADDRS}","--config.id='${LOGINID}'","--config.pass='${LOGINPASS}'","--server.port=${PORT}"]
+ENTRYPOINT ["java","-jar","/app.war","--config.macaddrs=${MACADDRS}","--config.id=${LOGINID}","--config.pass=${LOGINPASS}","--server.port=${PORT}"]

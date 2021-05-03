@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.util.StringUtils;
 
 @Configuration
 @EnableWebSecurity
@@ -36,8 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 http.authorizeRequests().antMatchers("/wol/**");
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.AuthorizedUrl wolAjax =
                 http.authorizeRequests().antMatchers("/wol/ajax/**");
-        if(this.id!=null && !this.id.trim().equals("")
-                && this.password!=null && !this.password.trim().equals("")){
+        if(StringUtils.hasLength(id.trim()) && StringUtils.hasLength(password.trim())){
             /*
             http.authorizeRequests()
                     .antMatchers("/wol/**")
@@ -72,9 +72,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void authenticate(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication()
-            .withUser(id)
-                .password("{noop}"+password)
-                .roles(LoginType.ADMIN.name());
+        if(StringUtils.hasLength(id.trim()) && StringUtils.hasLength(password.trim())) {
+            auth.inMemoryAuthentication()
+                    .withUser(id)
+                    .password("{noop}" + password)
+                    .roles(LoginType.ADMIN.name());
+        }
     }
 }
